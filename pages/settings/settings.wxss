@@ -1,0 +1,11 @@
+.s-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 26rpx 0;
+  border-bottom: 1rpx solid #f7f5f1;
+  font-size: 30rpx;
+}
+.s-row:last-child { border-bottom: none; }
+.caret { color: #c4beb4; font-size: 36rpx; }
+.foot { text-align: center; padding: 60rpx 0; }

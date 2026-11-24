@@ -1,0 +1,20 @@
+.car-notice {
+  margin: 16rpx 24rpx 0;
+  background: #fdeceb;
+  color: #c0392b;
+  font-size: 24rpx;
+  border-radius: 14rpx;
+  padding: 16rpx 24rpx;
+}
+.f-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f7f5f1;
+}
+.f-row:last-child { border-bottom: none; }
+.f-label { color: #55504a; font-size: 28rpx; }
+.f-input { color: #33302a; font-size: 30rpx; font-weight: 600; width: 300rpx; }
+.date-val { text-align: right; color: #2e6e5e; }
+.save-btn { margin: 48rpx 24rpx; }

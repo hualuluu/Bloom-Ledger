@@ -1,24 +1,31 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/ledger/ledger",
+    "pages/report/report",
+    "pages/settings/settings",
+    "pages/month/month",
+    "pages/budget/budget",
+    "pages/categories/categories"
   ],
   "window": {
-    "navigationBarTextStyle": "black",
-    "navigationStyle": "custom"
+    "navigationBarBackgroundColor": "#2e6e5e",
+    "navigationBarTitleText": "阿花记账",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f7f5f1",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#9a958c",
+    "selectedColor": "#2e6e5e",
+    "backgroundColor": "#fbfaf7",
+    "borderStyle": "white",
+    "list": [
+      { "pagePath": "pages/ledger/ledger", "text": "记账" },
+      { "pagePath": "pages/report/report", "text": "月报" },
+      { "pagePath": "pages/settings/settings", "text": "我的" }
+    ]
   },
   "style": "v2",
-  "renderer": "skyline",
-  "rendererOptions": {
-    "skyline": {
-      "defaultDisplayBlock": true,
-      "defaultContentBox": true,
-      "tagNameStyleIsolation": "legacy",
-      "disableABTest": true,
-      "sdkVersionBegin": "3.0.0",
-      "sdkVersionEnd": "15.255.255"
-    }
-  },
-  "componentFramework": "glass-easel",
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents"
 }

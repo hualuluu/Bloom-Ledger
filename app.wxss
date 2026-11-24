@@ -1,10 +1,56 @@
-/**app.wxss**/
-.container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 200rpx 0;
-  box-sizing: border-box;
-} 
+/* 阿花记账 · 暖纸风格（需求文档 3.9） */
+page {
+  background: #f7f5f1;
+  color: #33302a;
+  font-size: 28rpx;
+  line-height: 1.5;
+}
+.mono {
+  font-family: Menlo, Consolas, "Courier New", monospace;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.5rpx;
+}
+.card {
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 28rpx;
+  margin: 24rpx 24rpx 0;
+  box-shadow: 0 2rpx 12rpx rgba(46, 110, 94, 0.06);
+}
+.btn-main {
+  background: #2e6e5e;
+  color: #ffffff;
+  border-radius: 999rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+.btn-main:active { opacity: 0.85; }
+.btn-plain {
+  background: #f0ede6;
+  color: #2e6e5e;
+  border-radius: 999rpx;
+  font-size: 28rpx;
+}
+.section-title {
+  font-size: 26rpx;
+  color: #9a958c;
+  margin: 36rpx 40rpx 8rpx;
+  letter-spacing: 2rpx;
+}
+.input-num {
+  text-align: right;
+  font-family: Menlo, Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+}
+.row-between { display: flex; justify-content: space-between; align-items: center; }
+.muted { color: #9a958c; font-size: 24rpx; }
+.tag {
+  display: inline-block;
+  font-size: 20rpx;
+  padding: 2rpx 12rpx;
+  border-radius: 8rpx;
+  margin-left: 10rpx;
+  vertical-align: middle;
+}
+.tag-hard { background: #fdeceb; color: #c0392b; }
+.tag-soft { background: #fdf3e0; color: #b9770e; }

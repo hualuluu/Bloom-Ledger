@@ -1,0 +1,12 @@
+.add-row { display: flex; gap: 16rpx; margin-top: 8rpx; }
+.add-input { flex: 1; background: #f7f5f1; border-radius: 12rpx; padding: 14rpx 24rpx; }
+.add-btn { width: 160rpx; font-size: 26rpx; margin: 0; }
+.c-row { display: flex; justify-content: space-between; align-items: center; padding: 22rpx 0; border-bottom: 1rpx solid #f7f5f1; }
+.c-row:last-child { border-bottom: none; }
+.c-left { display: flex; align-items: center; }
+.c-name { font-size: 30rpx; }
+.c-name.off { color: #c4beb4; }
+.c-ops { display: flex; align-items: center; }
+.op { font-size: 24rpx; color: #2e6e5e; margin-left: 24rpx; }
+.op.warn { color: #c4beb4; }
+.tip { margin: 24rpx 40rpx 60rpx; }

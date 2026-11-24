@@ -1,24 +1,17 @@
 {
+  "description": "Bloom Ledger（阿花记账）v1.0 — 原生小程序 + 微信云开发（环境 ledger）",
+  "appid": "wx879c181744a6e9cc",
+  "compileType": "miniprogram",
+  "libVersion": "3.3.4",
+  "projectname": "Bloom Ledger",
+  "cloudfunctionRoot": "cloudfunctions/",
   "setting": {
     "es6": true,
+    "enhance": true,
     "postcss": true,
     "minified": true,
-    "uglifyFileName": false,
-    "enhance": true,
-    "packNpmRelationList": [],
-    "babelSetting": {
-      "ignore": [],
-      "disablePlugins": [],
-      "outputPath": ""
-    },
-    "useCompilerPlugins": false
-  },
-  "compileType": "miniprogram",
-  "simulatorPluginLibVersion": {},
-  "packOptions": {
-    "ignore": [],
-    "include": []
-  },
-  "appid": "wx879c181744a6e9cc",
-  "editorSetting": {}
+    "urlCheck": false,
+    "ignoreDevUnusedFiles": false,
+    "ignoreUploadUnusedFiles": true
+  }
 }

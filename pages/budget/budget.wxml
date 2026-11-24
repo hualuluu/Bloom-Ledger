@@ -1,0 +1,27 @@
+<view class="section-title">硬红线（超了警告）</view>
+<view class="card">
+  <view class="f-row" wx:for="{{rows}}" wx:key="cat" wx:if="{{item.hard}}">
+    <text class="f-label">{{item.cat}}<text class="tag tag-hard">硬红线</text></text>
+    <input class="f-input input-num" type="number" value="{{item.value}}" data-index="{{index}}" bindinput="onRowInput" />
+  </view>
+</view>
+
+<view class="section-title">观察线（标红提醒）</view>
+<view class="card">
+  <view class="f-row" wx:for="{{rows}}" wx:key="cat" wx:if="{{!item.hard}}">
+    <text class="f-label">{{item.cat}}<text class="tag tag-soft">观察线</text></text>
+    <input class="f-input input-num" type="number" value="{{item.value}}" data-index="{{index}}" bindinput="onRowInput" />
+  </view>
+</view>
+
+<view class="section-title">👄 嘴上合计专项红线</view>
+<view class="card">
+  <view class="f-row">
+    <text class="f-label">餐饮+零食水果+奶茶咖啡</text>
+    <input class="f-input input-num" type="number" value="{{mouth}}" bindinput="onMouthInput" />
+  </view>
+</view>
+
+<view class="tip muted">医疗、其他不设预算（不可控/兜底）。烟/油车/话费由月度复盘单独盯，不占类别红线。AI 分析结论在这里落地，红线数值可随时改。</view>
+
+<button class="btn-main save-btn" bindtap="onSave">保存</button>
