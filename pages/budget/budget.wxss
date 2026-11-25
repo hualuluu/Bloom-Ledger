@@ -2,5 +2,6 @@
 .f-row:last-child { border-bottom: none; }
 .f-label { color: #55504a; }
 .f-input { font-weight: 600; width: 200rpx; }
+.mouth-sum { color: #2e6e5e; text-align: right; }
 .tip { margin: 24rpx 40rpx; }
 .save-btn { margin: 40rpx 24rpx 60rpx; }

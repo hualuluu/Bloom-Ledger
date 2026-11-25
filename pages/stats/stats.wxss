@@ -1,0 +1,4 @@
+.head { display: flex; justify-content: space-between; align-items: center; }
+.month-pick { color: #2e6e5e; font-size: 30rpx; font-weight: 600; }
+.chart { width: 100%; display: block; }
+.foot { text-align: center; padding: 40rpx 0 60rpx; }

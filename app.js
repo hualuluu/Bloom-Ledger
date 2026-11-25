@@ -1,4 +1,4 @@
-// Bloom Ledger（阿花记账）v1.0.1
+// Bloom Ledger（阿花记账）v1.5.0
 // 修复：云数据库 add() 不支持自定义 _id，config 集合改用「key 字段 + 自动 _id」结构
 const ENV_ID = 'ledger-d9ga4jr0t2d1c4de3'
 
@@ -14,7 +14,8 @@ App({
     envId: ENV_ID,
     openid: '',
     categories: [],   // [{name, enabled}]
-    budgets: {}       // {类别: 月上限, ..., 嘴上合计: 1400}
+    budgets: {},      // {类别: 月上限, ..., 嘴上合计: 1400}
+    aiEnabled: false // AI 点评入口开关（需配置 MOONSHOT_API_KEY 后手动开启）
   },
 
   onLaunch() {
@@ -26,7 +27,16 @@ App({
 
     this.ensurePrivacy()
     this.ensureConfig()
+    this.loadAiEnabled()
     this.login()
+  },
+
+  // AI 分析开关（需求 3.5：未配置时入口隐藏）
+  async loadAiEnabled() {
+    try {
+      const doc = await this.fetchConfig('ai')
+      this.globalData.aiEnabled = !!(doc && doc.enabled)
+    } catch (e) { this.globalData.aiEnabled = false }
   },
 
   // 首次启动隐私协议弹窗

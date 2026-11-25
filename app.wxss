@@ -54,3 +54,4 @@ page {
 }
 .tag-hard { background: #fdeceb; color: #c0392b; }
 .tag-soft { background: #fdf3e0; color: #b9770e; }
+/* 壁纸（需求 3.9）：页面根容器带背景图，遮罩已烘焙进图 */

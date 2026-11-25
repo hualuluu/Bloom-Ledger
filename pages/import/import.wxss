@@ -1,0 +1,8 @@
+.step { padding: 8rpx 0; line-height: 1.6; }
+.imp-btn { margin-top: 32rpx; }
+.name { margin-top: 16rpx; }
+.line { padding: 16rpx 0; border-bottom: 1rpx solid #f7f5f1; }
+.line:last-child { border-bottom: none; }
+.strong { color: #2e6e5e; font-weight: 700; }
+.tip2 { margin-top: 20rpx; line-height: 1.6; }
+.ok-line { font-size: 32rpx; font-weight: 600; color: #2e6e5e; padding: 12rpx 0; }

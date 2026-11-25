@@ -1,0 +1,11 @@
+.tip { margin: 24rpx 40rpx 0; }
+.preset-grid { display: flex; flex-wrap: wrap; margin: 0 12rpx; }
+.preset-item { width: calc(50% - 24rpx); margin: 12rpx; }
+.preset-img {
+  width: 100%; height: 340rpx; border-radius: 20rpx;
+  border: 6rpx solid transparent; box-sizing: border-box;
+}
+.preset-img.on { border-color: #2e6e5e; }
+.preset-name { text-align: center; font-size: 26rpx; color: #55504a; padding: 12rpx 0; }
+.wp-btn { margin: 12rpx 0; }
+.clear-btn { color: #c0392b; }

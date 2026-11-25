@@ -4,7 +4,8 @@ const MAX = 16
 Page({
   data: { list: [], newName: '' },
 
-  onShow() { this.load() },
+  onShow() {
+    this.load() },
 
   async load() {
     const list = await app.getCategories(true)
@@ -55,6 +56,26 @@ Page({
     const list = this.data.list.slice()
     list[i] = { ...item, enabled: !item.enabled }
     this.saveList(list)
+  },
+
+  // 删除（二次确认；「其他」不可删；历史流水以文本存储类别名，不受影响）
+  remove(e) {
+    const i = e.currentTarget.dataset.index
+    const item = this.data.list[i]
+    if (item.name === '其他') { wx.showToast({ title: '「其他」不能删除', icon: 'none' }); return }
+    wx.showModal({
+      title: `删除「${item.name}」？`,
+      content: '已记的流水不受影响，仅以后记账不再出现该类。',
+      confirmText: '删除',
+      confirmColor: '#c0392b',
+      success: async (res) => {
+        if (!res.confirm) return
+        const list = this.data.list.slice()
+        list.splice(i, 1)
+        await this.saveList(list)
+        wx.showToast({ title: '已删除' })
+      }
+    })
   },
 
   async saveList(list) {

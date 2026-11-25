@@ -1,61 +1,83 @@
-<view class="section-title">填报月份：{{month}}</view>
-<view class="car-notice" wx:if="{{carNotice}}">{{carNotice}}</view>
-
-<view class="section-title">① 收入</view>
-<view class="card">
-  <view class="f-row" wx:for="{{incomeItems}}" wx:key="key">
-    <text class="f-label">{{item.label}}</text>
-    <input class="f-input input-num" type="digit" placeholder="0" value="{{income[item.key]}}"
-           data-sec="income" data-field="{{item.key}}" bindinput="onField" />
+<view>
+  <view class="section-title">填报月份：{{month}}</view>
+  <view class="car-notice" wx:if="{{carNotice}}">{{carNotice}}</view>
+  
+  <view class="section-title">① 收入</view>
+  <view class="card">
+    <view class="f-row" wx:for="{{incomeItems}}" wx:key="key">
+      <text class="f-label">{{item.label}}</text>
+      <input class="f-input input-num" type="digit" placeholder="0" value="{{income[item.key]}}"
+             data-sec="income" data-field="{{item.key}}" bindinput="onField" />
+    </view>
   </view>
+  
+  <view class="section-title">② 固定支出</view>
+  <view class="card">
+    <view class="f-row" wx:for="{{fixedItems}}" wx:key="key">
+      <text class="f-label">{{item.label}}</text>
+      <input class="f-input input-num" type="digit" placeholder="0" value="{{fixed[item.key]}}"
+             data-sec="fixed" data-field="{{item.key}}" bindinput="onField" />
+    </view>
+  </view>
+  
+  <view class="section-title">③ 对象账单（只填合计）</view>
+  <view class="card">
+    <view class="f-row" wx:for="{{partnerItems}}" wx:key="key">
+      <text class="f-label">{{item.label}}</text>
+      <input class="f-input input-num" type="digit" placeholder="0" value="{{partner[item.key]}}"
+             data-sec="partner" data-field="{{item.key}}" bindinput="onField" />
+    </view>
+  </view>
+  
+  <view class="section-title">④ 存款快照（20 号）</view>
+  <view class="card">
+    <view class="f-row">
+      <text class="f-label">日期</text>
+      <picker mode="date" value="{{savings.date}}" bindchange="onField" data-sec="savings" data-field="date">
+        <view class="f-input date-val">{{savings.date}} ▾</view>
+      </picker>
+    </view>
+    <view class="f-row" wx:if="{{savings.current && !savings.wechat && !savings.alipay && !savings.wage && !savings.daily}}">
+      <text class="f-label">活期（旧口径，迁移后消失）</text>
+      <input class="f-input input-num" type="digit" placeholder="0" value="{{savings.current}}"
+             data-sec="savings" data-field="current" bindinput="onField" />
+    </view>
+    <view class="f-row">
+      <text class="f-label">微信</text>
+      <input class="f-input input-num" type="digit" placeholder="0" value="{{savings.wechat}}"
+             data-sec="savings" data-field="wechat" bindinput="onField" />
+    </view>
+    <view class="f-row">
+      <text class="f-label">支付宝</text>
+      <input class="f-input input-num" type="digit" placeholder="0" value="{{savings.alipay}}"
+             data-sec="savings" data-field="alipay" bindinput="onField" />
+    </view>
+    <view class="f-row">
+      <text class="f-label">工资卡</text>
+      <input class="f-input input-num" type="digit" placeholder="0" value="{{savings.wage}}"
+             data-sec="savings" data-field="wage" bindinput="onField" />
+    </view>
+    <view class="f-row">
+      <text class="f-label">日常卡</text>
+      <input class="f-input input-num" type="digit" placeholder="0" value="{{savings.daily}}"
+             data-sec="savings" data-field="daily" bindinput="onField" />
+    </view>
+    <view class="f-row">
+      <text class="f-label">定存</text>
+      <input class="f-input input-num" type="digit" placeholder="0" value="{{savings.deposit}}"
+             data-sec="savings" data-field="deposit" bindinput="onField" />
+    </view>
+    <view class="f-row">
+      <text class="f-label">花呗待还</text>
+      <input class="f-input input-num" type="digit" placeholder="0" value="{{savings.huabeiDue}}"
+             data-sec="savings" data-field="huabeiDue" bindinput="onField" />
+    </view>
+    <view class="f-row">
+      <text class="f-label">花呗月消费</text>
+      <input class="f-input input-num" type="digit" placeholder="0" value="{{savings.huabeiSpend}}"
+             data-sec="savings" data-field="huabeiSpend" bindinput="onField" />
+    </view>
+  </view>
+  
+  <button class="btn-main save-btn" bindtap="onSave">保存填报</button>
 </view>
-
-<view class="section-title">② 固定支出</view>
-<view class="card">
-  <view class="f-row" wx:for="{{fixedItems}}" wx:key="key">
-    <text class="f-label">{{item.label}}</text>
-    <input class="f-input input-num" type="digit" placeholder="0" value="{{fixed[item.key]}}"
-           data-sec="fixed" data-field="{{item.key}}" bindinput="onField" />
-  </view>
-</view>
-
-<view class="section-title">③ 对象账单（只填合计）</view>
-<view class="card">
-  <view class="f-row" wx:for="{{partnerItems}}" wx:key="key">
-    <text class="f-label">{{item.label}}</text>
-    <input class="f-input input-num" type="digit" placeholder="0" value="{{partner[item.key]}}"
-           data-sec="partner" data-field="{{item.key}}" bindinput="onField" />
-  </view>
-</view>
-
-<view class="section-title">④ 存款快照（20 号）</view>
-<view class="card">
-  <view class="f-row">
-    <text class="f-label">日期</text>
-    <picker mode="date" value="{{savings.date}}" bindchange="onField" data-sec="savings" data-field="date">
-      <view class="f-input date-val">{{savings.date}} ▾</view>
-    </picker>
-  </view>
-  <view class="f-row">
-    <text class="f-label">活期（所有卡加总）</text>
-    <input class="f-input input-num" type="digit" placeholder="0" value="{{savings.current}}"
-           data-sec="savings" data-field="current" bindinput="onField" />
-  </view>
-  <view class="f-row">
-    <text class="f-label">定存</text>
-    <input class="f-input input-num" type="digit" placeholder="0" value="{{savings.deposit}}"
-           data-sec="savings" data-field="deposit" bindinput="onField" />
-  </view>
-  <view class="f-row">
-    <text class="f-label">花呗待还</text>
-    <input class="f-input input-num" type="digit" placeholder="0" value="{{savings.huabeiDue}}"
-           data-sec="savings" data-field="huabeiDue" bindinput="onField" />
-  </view>
-  <view class="f-row">
-    <text class="f-label">花呗月消费</text>
-    <input class="f-input input-num" type="digit" placeholder="0" value="{{savings.huabeiSpend}}"
-           data-sec="savings" data-field="huabeiSpend" bindinput="onField" />
-  </view>
-</view>
-
-<button class="btn-main save-btn" bindtap="onSave">保存填报</button>

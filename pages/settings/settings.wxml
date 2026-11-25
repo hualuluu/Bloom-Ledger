@@ -1,18 +1,35 @@
-<view class="card">
-  <view class="s-row" bindtap="showPrivacy">
-    <text>隐私说明</text><text class="caret">›</text>
+<view>
+  <view class="card">
+    <view class="s-row" bindtap="showPrivacy">
+      <text>隐私说明</text><text class="caret">›</text>
+    </view>
+    <navigator class="s-row" url="/pages/categories/categories">
+      <text>类别管理</text><text class="caret">›</text>
+    </navigator>
+    <navigator class="s-row" url="/pages/budget/budget">
+      <text>预算设置（红线）</text><text class="caret">›</text>
+    </navigator>
   </view>
-  <navigator class="s-row" url="/pages/categories/categories">
-    <text>类别管理</text><text class="caret">›</text>
-  </navigator>
-  <navigator class="s-row" url="/pages/budget/budget">
-    <text>预算设置（红线）</text><text class="caret">›</text>
-  </navigator>
+  
+  <view class="card">
+    <view class="s-row">
+      <text>AI 月度分析</text>
+      <switch checked="{{aiEnabled}}" bindchange="onAiToggle" color="#2e6e5e" />
+    </view>
+    <view class="muted ai-tip" bindtap="showAiGuide" wx:if="{{!aiEnabled}}">未开启：需要在云函数配置 Moonshot API key，点我看怎么配 →</view>
+    <view class="muted ai-tip ok" wx:if="{{aiEnabled}}">已开启：月报页出现「AI 点评」入口；key 存云端环境变量，不出现在前端。</view>
+  </view>
+  
+  <view class="card">
+    <navigator class="s-row" url="/pages/export/export">
+      <text>导出与备份</text><text class="caret">›</text>
+    </navigator>
+    <navigator class="s-row" url="/pages/import/import">
+      <text>Excel 导入（历史数据迁移）</text><text class="caret">›</text>
+    </navigator>
+    <view class="s-row"><text>数据存储</text><text class="muted">微信云开发 · 环境 ledger</text></view>
+    <view class="s-row"><text>版本</text><text class="muted">{{version}}</text></view>
+  </view>
+  
+  <view class="foot muted">阿花记账 · 每天 10 秒，每月看两次</view>
 </view>
-
-<view class="card">
-  <view class="s-row"><text>数据存储</text><text class="muted">微信云开发 · 环境 ledger</text></view>
-  <view class="s-row"><text>版本</text><text class="muted">{{version}}</text></view>
-</view>
-
-<view class="foot muted">阿花记账 · 每天 10 秒，每月看两次</view>

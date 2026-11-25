@@ -1,0 +1,17 @@
+.head { display: flex; justify-content: space-between; align-items: center; }
+.month-pick { font-size: 36rpx; font-weight: 700; color: #2e6e5e; }
+.over-badge { font-size: 24rpx; padding: 6rpx 20rpx; border-radius: 999rpx; }
+.over-badge.bad { background: #fdeceb; color: #c0392b; font-weight: 600; }
+.over-badge.good { background: #eef4f2; color: #2e6e5e; }
+.bar { height: 14rpx; background: #f0ede6; border-radius: 999rpx; margin-top: 14rpx; overflow: hidden; }
+.bar-in { height: 100%; background: #2e6e5e; border-radius: 999rpx; }
+.bar-in.bad { background: #c0392b; }
+.b-row { padding: 18rpx 0; border-bottom: 1rpx solid #f7f5f1; }
+.b-row:last-child { border-bottom: none; }
+.neg { color: #c0392b; }
+.status { font-size: 24rpx; }
+.status.bad { color: #c0392b; font-weight: 700; }
+.status.good { color: #2e6e5e; }
+.tip { margin: 24rpx 40rpx; }
+.empty-tip { text-align: center; padding: 40rpx 0; }
+.go-budget { margin: 8rpx 24rpx 60rpx; }

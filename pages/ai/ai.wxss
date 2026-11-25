@@ -1,0 +1,22 @@
+.head { display: flex; justify-content: space-between; align-items: center; }
+.month-pick { font-size: 34rpx; font-weight: 700; color: #2e6e5e; }
+.ai-tag { font-size: 20rpx; background: #eef4f2; color: #2e6e5e; padding: 4rpx 16rpx; border-radius: 8rpx; }
+.note-tip { margin: 20rpx 40rpx 0; }
+.loading-row { display: flex; align-items: center; gap: 20rpx; padding: 20rpx 0; }
+.spin {
+  width: 36rpx; height: 36rpx; border-radius: 50%;
+  border: 4rpx solid #e8e4da; border-top-color: #2e6e5e;
+  animation: spin 0.9s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg) } }
+.md rich-text h1, .md rich-text h2, .md rich-text h3 { color: #2e6e5e; margin: 24rpx 0 12rpx; }
+.md rich-text h1 { font-size: 34rpx; }
+.md rich-text h2 { font-size: 32rpx; }
+.md rich-text h3 { font-size: 30rpx; }
+.md rich-text p { margin: 12rpx 0; line-height: 1.7; }
+.md rich-text ul { margin: 8rpx 0 8rpx 32rpx; }
+.md rich-text li { line-height: 1.7; }
+.err-title { font-weight: 600; padding: 8rpx 0; }
+.err-msg { line-height: 1.7; }
+.retry { margin-top: 28rpx; }
+.foot { text-align: center; padding: 40rpx 0 60rpx; }

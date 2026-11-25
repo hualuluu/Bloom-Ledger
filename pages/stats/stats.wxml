@@ -1,0 +1,30 @@
+<view>
+  <view class="head card">
+    <picker mode="date" fields="month" value="{{month}}" bindchange="onMonthChange">
+      <view class="month-pick">{{month}} ▾</view>
+    </picker>
+    <view class="muted">下拉可刷新</view>
+  </view>
+  
+  <view class="section-title">当月分类占比 · 环比上月（↑增 ↓降）</view>
+  <view class="card">
+    <canvas type="2d" id="c1" class="chart" style="height: {{h1}}px"></canvas>
+  </view>
+  
+  <view class="section-title">近 6 个月趋势</view>
+  <view class="card">
+    <canvas type="2d" id="c2" class="chart" style="height: {{h2}}px"></canvas>
+  </view>
+  
+  <view class="section-title">预算执行（实际 vs 上限）</view>
+  <view class="card">
+    <canvas type="2d" id="c3" class="chart" style="height: {{h3}}px"></canvas>
+  </view>
+  
+  <view class="section-title">👄 嘴上合计专项（餐饮+零食+奶茶）</view>
+  <view class="card">
+    <canvas type="2d" id="c4" class="chart" style="height: {{h4}}px"></canvas>
+  </view>
+  
+  <view class="foot muted">手绘 canvas · 离线可用 · 数据与月报页一致</view>
+</view>

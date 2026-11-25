@@ -39,6 +39,14 @@ async function queryAll(collName, where) {
   return all
 }
 
+// v3.5 固定支出去重：加油/电费/话费已移至对象账单，旧数据残留的这三个字段不计入固定合计
+const REMOVED_FIXED = ['fuel', 'electric', 'phone']
+function fixedTotal(fixed) {
+  return Object.keys(fixed || {})
+    .filter(k => REMOVED_FIXED.indexOf(k) < 0)
+    .reduce((s, k) => s + num(fixed[k]), 0)
+}
+
 // 按类别汇总金额
 function sumBy(list, key) {
   const map = {}
@@ -49,4 +57,4 @@ function sumBy(list, key) {
   return map
 }
 
-module.exports = { fmtDate, today, monthOf, prevMonth, snapshotDate, num, money, queryAll, sumBy }
+module.exports = { fmtDate, today, monthOf, prevMonth, snapshotDate, num, money, queryAll, sumBy, fixedTotal }

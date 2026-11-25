@@ -1,0 +1,33 @@
+<view>
+  <view class="section-title">怎么用</view>
+  <view class="card" wx:if="{{step === 'pick'}}">
+    <view class="step muted">1. 把「家庭记账模板.xlsx」发到微信「文件传输助手」</view>
+    <view class="step muted">2. 点下面按钮选中该文件，解析在云端完成</view>
+    <view class="step muted">3. 预览确认后一键写入，重复导入会自动跳过已存在的流水</view>
+    <button class="btn-main imp-btn" loading="{{busy}}" bindtap="pickFile">从微信聊天选择 Excel 文件</button>
+    <view class="muted name" wx:if="{{fileName}}">已选择：{{fileName}}</view>
+  </view>
+  
+  <block wx:if="{{step === 'preview'}}">
+    <view class="section-title">解析结果预览</view>
+    <view class="card">
+      <view class="line row-between"><text>模板内流水</text><text class="mono">{{parsed.entries.length}} 笔</text></view>
+      <view class="line row-between"><text>已存在（将跳过）</text><text class="mono">{{dupCount}} 笔</text></view>
+      <view class="line row-between"><text>待导入流水</text><text class="mono strong">{{newEntries.length}} 笔</text></view>
+      <view class="line row-between"><text>月度填报数据</text><text class="mono">{{monthsLabel}}</text></view>
+      <view class="muted tip2">填报数据仅在对应月份从未填报过时写入，不会覆盖你已在小程序里填的值。</view>
+      <button class="btn-main imp-btn" loading="{{busy}}" bindtap="confirm">确认导入 {{newEntries.length}} 笔流水</button>
+      <button class="btn-plain imp-btn" bindtap="reset">重新选择文件</button>
+    </view>
+  </block>
+  
+  <block wx:if="{{step === 'done'}}">
+    <view class="section-title">导入完成</view>
+    <view class="card">
+      <view class="ok-line">✅ 新导入流水 {{doneInfo.ok}} 笔<block wx:if="{{doneInfo.fail}}">（失败 {{doneInfo.fail}} 笔）</block></view>
+      <view class="muted">月度填报：写入 {{doneInfo.monthCount - doneInfo.monthSkipped}} 个月，跳过已存在 {{doneInfo.monthSkipped}} 个</view>
+      <view class="muted tip2">去「记账」页按月份查看，或到「月报」页核对总数。</view>
+      <button class="btn-plain imp-btn" bindtap="reset">再导入一个文件</button>
+    </view>
+  </block>
+</view>

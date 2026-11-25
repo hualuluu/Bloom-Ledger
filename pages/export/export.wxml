@@ -1,0 +1,22 @@
+<view>
+  <view class="section-title">导出月份</view>
+  <view class="card">
+    <picker mode="date" fields="month" value="{{month}}" bindchange="onMonthChange">
+      <view class="month-pick">{{month}} ▾</view>
+    </picker>
+  </view>
+  
+  <view class="section-title">Excel 分析包（需求 3.7）</view>
+  <view class="card">
+    <view class="muted exp-tip">5 个页签：流水明细 / 月度总览 / 对象账单 / 存款快照 / 预算执行。生成后直接发给你的 AI 做月度复盘。</view>
+    <button class="btn-main exp-btn" loading="{{busy}}" bindtap="onExportExcel">导出 {{month}} Excel 分析包</button>
+  </view>
+  
+  <view class="section-title">数据备份</view>
+  <view class="card">
+    <view class="muted exp-tip">全部流水 + 月度填报 + 类别预算设置的 JSON 备份，建议每月导出一次留底。</view>
+    <button class="btn-plain exp-btn" loading="{{busy}}" bindtap="onExportJson">导出 JSON 全量备份</button>
+  </view>
+  
+  <view class="foot muted">导出的文件也可以微信内转发给文件传输助手存档</view>
+</view>

@@ -1,0 +1,17 @@
+<view class="page-bg" style="{{wallpaperStyle}}">
+  <view class="muted tip">浅色预设 + 相册上传，都会自动叠半透明遮罩保证金额可读。</view>
+  
+  <view class="section-title">内置浅色预设</view>
+  <view class="preset-grid">
+    <view class="preset-item" wx:for="{{presets}}" wx:key="idx" bindtap="usePreset" data-idx="{{item.idx}}">
+      <view class="preset-img {{current === 'preset-' + item.idx ? 'on' : ''}}" style="{{item.style}}" />
+      <view class="preset-name">{{item.name}}<text wx:if="{{current === 'preset-' + item.idx}}"> ✓</text></view>
+    </view>
+  </view>
+  
+  <view class="section-title">自定义</view>
+  <view class="card">
+    <button class="btn-plain wp-btn" loading="{{busy}}" bindtap="pickFromAlbum">从相册选择{{current === 'custom' ? '（使用中）' : ''}}</button>
+    <button class="btn-plain wp-btn clear-btn" bindtap="clear" wx:if="{{current}}">清除壁纸，恢复默认底色</button>
+  </view>
+</view>

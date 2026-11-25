@@ -66,5 +66,10 @@
   white-space: nowrap;
 }
 .entry-amt { font-size: 30rpx; font-weight: 600; }
+.entry-right { display: flex; align-items: center; }
 .empty { text-align: center; padding: 80rpx 0; }
 .foot-tip { text-align: center; padding: 32rpx 0 48rpx; }
+
+/* v3.9 编辑态 */
+.cancel-edit { text-align: center; font-size: 26rpx; color: #8a9a94; padding: 20rpx 0 4rpx; }
+.entry { transition: background .15s; }

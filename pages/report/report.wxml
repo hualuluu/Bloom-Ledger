@@ -1,64 +1,67 @@
-<view class="head card">
-  <picker mode="date" fields="month" value="{{month}}" bindchange="onMonthChange">
-    <view class="month-pick">{{month}} ▾</view>
-  </picker>
-  <view class="head-right">
-    <view class="fill-state {{filled ? 'ok' : 'no'}}">{{filled ? '✓ 已填报' : '未填报'}}</view>
-    <button class="btn-plain fill-btn" size="mini" bindtap="goFill">{{filled ? '修改填报' : '去填报'}}</button>
+<view>
+  <view class="head card">
+    <picker mode="date" fields="month" value="{{month}}" bindchange="onMonthChange">
+      <view class="month-pick">{{month}} ▾</view>
+    </picker>
+    <view class="head-right">
+      <view class="fill-state {{filled ? 'ok' : 'no'}}">{{filled ? '✓ 已填报' : '未填报'}}</view>
+      <button class="btn-plain fill-btn" size="mini" bindtap="goFill">{{filled ? '修改填报' : '去填报'}}</button>
+    </view>
   </view>
-</view>
-
-<view class="car-notice" wx:if="{{carNotice}}">{{carNotice}}</view>
-
-<view class="grid" wx:if="{{stats}}">
-  <view class="g-card">
-    <view class="g-num mono {{stats.balance < 0 ? 'neg' : ''}}">¥{{stats.balance}}</view>
-    <view class="g-label">月结余</view>
+  
+  <view class="car-notice" wx:if="{{carNotice}}">{{carNotice}}</view>
+  
+  <view class="grid" wx:if="{{stats}}">
+    <view class="g-card">
+      <view class="g-num mono {{stats.balance < 0 ? 'neg' : ''}}">¥{{stats.balance}}</view>
+      <view class="g-label">月结余</view>
+    </view>
+    <view class="g-card">
+      <view class="g-num mono">{{stats.savingRate}}%</view>
+      <view class="g-label">储蓄率</view>
+    </view>
+    <view class="g-card">
+      <view class="g-num mono">{{stats.milkTea}}</view>
+      <view class="g-label">奶茶咖啡（上限{{stats.milkTeaBudget}}）</view>
+    </view>
+    <view class="g-card" wx:if="{{stats.netSavings !== null}}">
+      <view class="g-num mono">¥{{stats.netSavings}}</view>
+      <view class="g-label">净存款</view>
+    </view>
   </view>
-  <view class="g-card">
-    <view class="g-num mono">{{stats.savingRate}}%</view>
-    <view class="g-label">储蓄率</view>
+  
+  <view class="card" wx:if="{{stats}}">
+    <view class="line row-between"><text>收入合计</text><text class="mono">¥{{stats.incomeTotal}}</text></view>
+    <view class="line row-between"><text>固定支出</text><text class="mono">¥{{stats.fixedTotal}}</text></view>
+    <view class="line row-between"><text>我的灵活支出（流水）</text><text class="mono">¥{{stats.flexible}}</text></view>
+    <view class="line row-between"><text>对象合计</text><text class="mono">¥{{stats.partnerTotal}}</text></view>
+    <view class="line total row-between"><text>总支出</text><text class="mono">¥{{stats.totalSpend}}</text></view>
   </view>
-  <view class="g-card">
-    <view class="g-num mono">{{stats.milkTea}}</view>
-    <view class="g-label">奶茶咖啡（上限{{stats.milkTeaBudget}}）</view>
-  </view>
-  <view class="g-card" wx:if="{{stats.netSavings !== null}}">
-    <view class="g-num mono">¥{{stats.netSavings}}</view>
-    <view class="g-label">净存款</view>
-  </view>
-</view>
-
-<view class="card" wx:if="{{stats}}">
-  <view class="line row-between"><text>收入合计</text><text class="mono">¥{{stats.incomeTotal}}</text></view>
-  <view class="line row-between"><text>固定支出</text><text class="mono">¥{{stats.fixedTotal}}</text></view>
-  <view class="line row-between"><text>我的灵活支出（流水）</text><text class="mono">¥{{stats.flexible}}</text></view>
-  <view class="line row-between"><text>对象合计</text><text class="mono">¥{{stats.partnerTotal}}</text></view>
-  <view class="line total row-between"><text>总支出</text><text class="mono">¥{{stats.totalSpend}}</text></view>
-</view>
-
-<view class="section-title" wx:if="{{mouthRow}}">👄 嘴上合计专项（餐饮+零食+奶茶）</view>
-<view class="card" wx:if="{{mouthRow}}">
-  <view class="row-between">
-    <text class="mono">¥{{mouthRow.actual}} / ¥{{mouthRow.limit}}</text>
-    <text class="status {{mouthRow.over ? 'bad' : 'good'}}">{{mouthRow.over ? '超红线！' : 'OK'}}</text>
-  </view>
-  <view class="bar">
-    <view class="bar-in {{mouthRow.over ? 'bad' : 'good'}}" style="width: {{mouthRow.pct}}%"></view>
-  </view>
-</view>
-
-<view class="section-title" wx:if="{{budgetRows.length}}">预算执行（点击「我的 → 预算设置」可改红线）</view>
-<view class="card" wx:if="{{budgetRows.length}}">
-  <view class="b-row" wx:for="{{budgetRows}}" wx:key="cat">
+  
+  <view class="section-title" wx:if="{{mouthRow}}">👄 嘴上合计专项（餐饮+零食+奶茶）</view>
+  <view class="card" wx:if="{{mouthRow}}">
     <view class="row-between">
-      <text>{{item.cat}}</text>
-      <text class="mono {{item.over ? 'neg' : ''}}">{{item.actual}} / {{item.limit}}</text>
+      <text class="mono">¥{{mouthRow.actual}} / ¥{{mouthRow.limit}}</text>
+      <text class="status {{mouthRow.over ? 'bad' : 'good'}}">{{mouthRow.over ? '超红线！' : 'OK'}}</text>
     </view>
     <view class="bar">
-      <view class="bar-in {{item.over ? 'bad' : ''}}" style="width: {{item.pct}}%"></view>
+      <view class="bar-in {{mouthRow.over ? 'bad' : 'good'}}" style="width: {{mouthRow.pct}}%"></view>
     </view>
   </view>
+  
+  <view class="card link-card" wx:if="{{stats}}">
+    <view class="link-row" bindtap="goBudgetExec">
+      <text>🎯 预算执行（逐类明细）</text>
+      <view class="link-right">
+        <text class="over-badge {{overCount ? 'bad' : 'good'}}" wx:if="{{hasBudget}}">{{overCount ? overCount + ' 类超标' : '全部达标'}}</text>
+        <text class="caret">›</text>
+      </view>
+    </view>
+    <view class="link-row" bindtap="goStats"><text>📊 统计图表（近 6 月趋势 / 占比 / 预算执行图）</text><text class="caret">›</text></view>
+    <view class="link-row" bindtap="goExport"><text>📤 导出本月 Excel 分析包（发 AI 复盘）</text><text class="caret">›</text></view>
+    <view class="link-row" bindtap="goAi" wx:if="{{aiEnabled}}"><text>🤖 AI 点评（月度分析）</text><text class="caret">›</text></view>
+    <view class="link-row" bindtap="onShareCard"><text>🖼 分享月报卡片</text><text class="caret">›</text></view>
+  </view>
+  
+  <view class="empty muted" wx:if="{{!stats}}">加载中…</view>
 </view>
-
-<view class="empty muted" wx:if="{{!stats}}">加载中…</view>

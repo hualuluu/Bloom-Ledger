@@ -1,0 +1,27 @@
+<view>
+  <view class="head card">
+    <text class="month-pick">{{month}} 月度点评</text>
+    <text class="ai-tag">AI 生成</text>
+  </view>
+  
+  <view class="muted note-tip">仅发送聚合数据（分类汇总、预算执行、近三月关键数字），不发送逐笔流水。</view>
+  
+  <view class="card" wx:if="{{state === 'loading'}}">
+    <view class="loading-row">
+      <view class="spin"></view>
+      <text>AI 分析中，约 10~30 秒…</text>
+    </view>
+  </view>
+  
+  <view class="card md" wx:if="{{state === 'done'}}">
+    <rich-text nodes="{{html}}"></rich-text>
+  </view>
+  
+  <view class="card" wx:if="{{state === 'error'}}">
+    <view class="err-title">没分析出来</view>
+    <view class="muted err-msg">{{errMsg}}</view>
+    <button class="btn-main retry" bindtap="run">重试</button>
+  </view>
+  
+  <view class="foot muted">结论供参考，红线调整在「我的 → 预算设置」落地</view>
+</view>

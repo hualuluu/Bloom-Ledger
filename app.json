@@ -5,7 +5,12 @@
     "pages/settings/settings",
     "pages/month/month",
     "pages/budget/budget",
-    "pages/categories/categories"
+    "pages/categories/categories",
+    "pages/stats/stats",
+    "pages/export/export",
+    "pages/budgetexec/budgetexec",
+    "pages/import/import",
+    "pages/ai/ai"
   ],
   "window": {
     "navigationBarBackgroundColor": "#2e6e5e",

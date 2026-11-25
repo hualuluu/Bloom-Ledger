@@ -1,21 +1,24 @@
-<view class="card">
-  <view class="add-row">
-    <input class="add-input" placeholder="新类别名（≤6字）" maxlength="6" value="{{newName}}" bindinput="onNewInput" confirm-type="done" bindconfirm="add" />
-    <button class="btn-plain add-btn" bindtap="add">新增</button>
-  </view>
-</view>
-
-<view class="card">
-  <view class="c-row" wx:for="{{list}}" wx:key="name">
-    <view class="c-left">
-      <text class="c-name {{item.enabled ? '' : 'off'}}">{{item.name}}</text>
-      <text class="tag tag-soft" wx:if="{{!item.enabled}}">已停用</text>
-    </view>
-    <view class="c-ops">
-      <text class="op" bindtap="rename" data-index="{{index}}">改名</text>
-      <text class="op {{item.name === '其他' ? 'warn' : ''}}" bindtap="toggle" data-index="{{index}}">{{item.enabled ? '停用' : '启用'}}</text>
+<view>
+  <view class="card">
+    <view class="add-row">
+      <input class="add-input" placeholder="新类别名（≤6字）" maxlength="6" value="{{newName}}" bindinput="onNewInput" confirm-type="done" bindconfirm="add" />
+      <button class="btn-plain add-btn" bindtap="add">新增</button>
     </view>
   </view>
+  
+  <view class="card">
+    <view class="c-row" wx:for="{{list}}" wx:key="name">
+      <view class="c-left">
+        <text class="c-name {{item.enabled ? '' : 'off'}}">{{item.name}}</text>
+        <text class="tag tag-soft" wx:if="{{!item.enabled}}">已停用</text>
+      </view>
+      <view class="c-ops">
+        <text class="op" bindtap="rename" data-index="{{index}}">改名</text>
+        <text class="op {{item.name === '其他' ? 'warn' : ''}}" bindtap="toggle" data-index="{{index}}">{{item.enabled ? '停用' : '启用'}}</text>
+        <text class="op {{item.name === '其他' ? 'warn' : ''}}" bindtap="remove" data-index="{{index}}">删除</text>
+      </view>
+    </view>
+  </view>
+  
+  <view class="tip muted">上限 16 个类别；新类别默认无红线。类别只影响记一笔的可选项，历史流水不受影响。</view>
 </view>
-
-<view class="tip muted">上限 16 个类别；新类别默认无红线。类别只影响记一笔的可选项，历史流水不受影响。</view>

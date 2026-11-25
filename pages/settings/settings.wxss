@@ -9,3 +9,5 @@
 .s-row:last-child { border-bottom: none; }
 .caret { color: #c4beb4; font-size: 36rpx; }
 .foot { text-align: center; padding: 60rpx 0; }
+.ai-tip { padding: 4rpx 0 12rpx; line-height: 1.6; }
+.ai-tip.ok { color: #2e6e5e; }

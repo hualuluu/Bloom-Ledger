@@ -1,45 +1,50 @@
-<view class="rule-tip">📌 花呗消费当天记，还款当天不记（防重复）</view>
-
-<view class="card">
-  <view class="top-row">
-    <picker mode="date" value="{{date}}" bindchange="onDateChange">
-      <view class="date-pick">{{date}} <text class="caret">▾</text></view>
-    </picker>
-    <view class="amount-wrap">
-      <text class="yen">¥</text>
-      <input class="amount mono" type="digit" placeholder="0.00" value="{{amount}}"
-             focus bindinput="onAmountInput" confirm-type="done" bindconfirm="submit" />
+<view>
+  <view class="rule-tip">📌 花呗消费当天记，还款当天不记（防重复）</view>
+  
+  <view class="card">
+    <view class="top-row">
+      <picker mode="date" value="{{date}}" bindchange="onDateChange">
+        <view class="date-pick">{{date}} <text class="caret">▾</text></view>
+      </picker>
+      <view class="amount-wrap">
+        <text class="yen">¥</text>
+        <input class="amount mono" type="digit" placeholder="0.00" value="{{amount}}"
+               focus bindinput="onAmountInput" confirm-type="done" bindconfirm="submit" />
+      </view>
+    </view>
+  
+    <scroll-view class="chips" scroll-x enhanced show-scrollbar="{{false}}">
+      <view wx:for="{{categories}}" wx:key="name"
+            class="chip {{item.name === category ? 'chip-on' : ''}}"
+            bindtap="pick" data-name="{{item.name}}">{{item.name}}</view>
+    </scroll-view>
+  
+    <input class="note" placeholder="备注（可空，≤30字）" maxlength="30"
+           value="{{note}}" bindinput="onNoteInput" />
+  
+    <button class="btn-main" bindtap="submit">{{editingId ? '保存修改' : '记一笔'}}</button>
+    <view class="cancel-edit" wx:if="{{editingId}}" bindtap="cancelEdit">取消修改，返回记账</view>
+  </view>
+  
+  <view class="section-title">{{month}} 明细 · {{totalCount}} 笔 · 合计 ¥{{totalSum}}</view>
+  
+  <view class="card day-card" wx:for="{{groups}}" wx:for-item="g" wx:key="date">
+    <view class="day-head row-between">
+      <text>{{g.date}}</text>
+      <text class="mono">¥{{g.total}}</text>
+    </view>
+    <view class="entry row-between" wx:for="{{g.items}}" wx:for-item="e" wx:key="_id"
+          bindlongpress="onLongPress" data-id="{{e._id}}" data-amount="{{e.amount}}" data-category="{{e.category}}">
+      <view class="entry-left">
+        <text class="entry-cat">{{e.category}}</text>
+        <text class="entry-note" wx:if="{{e.note}}">{{e.note}}</text>
+      </view>
+      <view class="entry-right">
+        <text class="entry-amt mono">-{{e.amount}}</text>
+      </view>
     </view>
   </view>
-
-  <scroll-view class="chips" scroll-x enhanced show-scrollbar="{{false}}">
-    <view wx:for="{{categories}}" wx:key="name"
-          class="chip {{item.name === category ? 'chip-on' : ''}}"
-          bindtap="pick" data-name="{{item.name}}">{{item.name}}</view>
-  </scroll-view>
-
-  <input class="note" placeholder="备注（可空，≤30字）" maxlength="30"
-         value="{{note}}" bindinput="onNoteInput" />
-
-  <button class="btn-main" bindtap="submit">记一笔</button>
+  
+  <view class="empty muted" wx:if="{{!groups.length}}">这个月还没有流水，记一笔吧 👆</view>
+  <view class="foot-tip muted">长按一条明细可编辑或删除</view>
 </view>
-
-<view class="section-title">{{month}} 明细 · {{totalCount}} 笔 · 合计 ¥{{totalSum}}</view>
-
-<view class="card day-card" wx:for="{{groups}}" wx:for-item="g" wx:key="date">
-  <view class="day-head row-between">
-    <text>{{g.date}}</text>
-    <text class="mono">¥{{g.total}}</text>
-  </view>
-  <view class="entry row-between" wx:for="{{g.items}}" wx:for-item="e" wx:key="_id"
-        bindlongpress="onLongPress" data-id="{{e._id}}" data-amount="{{e.amount}}" data-category="{{e.category}}">
-    <view class="entry-left">
-      <text class="entry-cat">{{e.category}}</text>
-      <text class="entry-note" wx:if="{{e.note}}">{{e.note}}</text>
-    </view>
-    <text class="entry-amt mono">-{{e.amount}}</text>
-  </view>
-</view>
-
-<view class="empty muted" wx:if="{{!groups.length}}">这个月还没有流水，记一笔吧 👆</view>
-<view class="foot-tip muted">长按一条明细可删除</view>
